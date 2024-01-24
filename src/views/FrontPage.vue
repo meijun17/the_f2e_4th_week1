@@ -1,12 +1,24 @@
 <template>
   <section class="container front-page">
     <div class="header">
-      <img src="../assets/images/the_f2e_logo.png" alt="the_f2e_logo" />
+      <div class="content">
+        <div class="title">
+          <img src="../assets/images/menu.png" class="menu-icon" alt="menu" />
+          <img
+            class="logo"
+            src="../assets/images/the_f2e_logo.png"
+            alt="the_f2e_logo"
+          />
+        </div>
+        <button type="button" class="main-btn">立即報名</button>
+      </div>
       <ul class="nav">
         <li class="nav-item"><a href="">關卡資訊</a></li>
         <li class="nav-item"><a href="">攻略資源</a></li>
         <li class="nav-item"><a href="">求職專區</a></li>
-        <li class="nav-item"><button>登入</button></li>
+        <li class="nav-item">
+          <button type="button" class="main-btn">登入</button>
+        </li>
       </ul>
     </div>
     <div class="banner">
@@ -23,7 +35,7 @@
             alt="banner_img"
           />
           <p class="banner-text">互動式網頁設計</p>
-          <button class="banner-btn">立即報名</button>
+          <button type="button" class="banner-btn">立即報名</button>
         </div>
         <img
           class="banner-img banner-code"
@@ -76,7 +88,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
+    padding: 24px 32px;
+    .content {
+      .menu-icon {
+        display: none;
+      }
+      .main-btn {
+        display: none;
+      }
+    }
   }
   .banner {
     height: calc(100vh - 155px);
@@ -107,8 +127,6 @@
     animation: fadeInTitle 5s ease;
   }
   .banner-text {
-    position: relative;
-    left: 17%;
     color: white;
     font-size: 28px;
     font-weight: 700;
@@ -117,9 +135,10 @@
     line-height: 40px;
     margin-top: 32px;
     width: fit-content;
+    text-align: center;
+    width: 100%;
   }
   .banner-btn {
-    position: relative;
     width: 33%;
     background-color: #ffe34e;
     border-radius: 50px;
@@ -170,54 +189,35 @@
 .nav {
   display: flex;
   align-items: center;
-  padding: 24px 0;
-}
-.nav-item a {
-  text-decoration: none;
-  padding: 0 16px;
-  color: #858993;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Noto Sans TC", sans-serif;
-  line-height: 20px;
-  position: relative;
-  transition: 0.3s;
-  &::after {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    content: "";
-    background-color: #55ffad;
-    height: 4px;
-    width: 12px;
-    border-radius: 20px;
-    transition: 0.3s;
-  }
-  &:hover {
-    color: #ffffff;
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
-    &::after {
-      opacity: 1;
-    }
-  }
-}
-.nav-item {
-  button {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 40px;
-    padding: 10px 24px 12px;
-    cursor: pointer;
+  .nav-item a {
+    text-decoration: none;
+    padding: 0 16px;
+    color: #858993;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: "Noto Sans TC", sans-serif;
+    line-height: 20px;
+    position: relative;
+    transition: 0.3s;
+    &::after {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      content: "";
+      background-color: #55ffad;
+      height: 4px;
+      width: 12px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
     &:hover {
-      color: #57ffae;
-      box-shadow: 0px 0px 10px rgba(85, 255, 174, 0.6);
-      background: rgba(85, 255, 174, 0.1);
+      color: #ffffff;
+      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+      &::after {
+        opacity: 1;
+      }
     }
   }
 }
@@ -229,6 +229,64 @@
   .join-us-item {
     animation: marquee 10s linear infinite;
     animation-delay: 2.5s;
+  }
+}
+
+@media (max-width: 768px) {
+  .front-page {
+    .header {
+      .content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+          display: flex;
+          align-items: center;
+          .logo {
+            width: 110px;
+          }
+          .menu-icon {
+            display: block;
+          }
+        }
+        .main-btn {
+          display: block;
+        }
+      }
+      .nav {
+        display: none;
+      }
+    }
+    .banner {
+      .banner-title {
+        width: 100%;
+      }
+      .banner-sub-title {
+        position: absolute;
+        width: 50%;
+        top: -15%;
+        left: 25%;
+      }
+      .banner-text {
+        font-size: 20px;
+      }
+      .banner-btn {
+        margin: 50px auto 0;
+        font-size: 20px;
+      }
+      .banner-code {
+        top: 5%;
+        left: 20%;
+      }
+      .banner-dashboard {
+        top: 74%;
+      }
+      .banner-direction01,
+      .banner-direction02 {
+        display: none;
+      }
+    }
   }
 }
 
@@ -281,6 +339,23 @@
   100% {
     left: 100%;
     transform: translateX(0%);
+  }
+}
+
+.main-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 40px;
+  padding: 10px 24px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Noto Sans TC", sans-serif;
+  &:hover {
+    color: #57ffae;
+    box-shadow: 0px 0px 10px rgba(85, 255, 174, 0.6);
+    background: rgba(85, 255, 174, 0.1);
   }
 }
 </style>
